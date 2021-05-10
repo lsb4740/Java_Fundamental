@@ -2,7 +2,7 @@ package java_20210507;
 
 import java.util.*;
 
-public class Calendar {
+public class Calendar  {
 	Scanner scanner = new Scanner(System.in);
 	private int[] monthArray = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	public static final int MONDAY = 1;
@@ -12,6 +12,18 @@ public class Calendar {
 	public static final int FRIDAY = 5;
 	public static final int SATURDAY = 6;
 	public static final int SUNDAY = 0;
+	
+
+	public Calendar(int year) {
+		this(year,0,0);
+	}
+	public Calendar(int year, int month) {
+		this(year,month,0);
+	}
+	public Calendar(int year, int month, int day) {
+		this(year,month,day)
+	}
+
 	private int leapYearCount(int year) {
 		int count = 0;
 		for (int i = 1; i < year; i++) {
