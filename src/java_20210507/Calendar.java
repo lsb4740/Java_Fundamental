@@ -12,8 +12,10 @@ public class Calendar  {
 	public static final int FRIDAY = 5;
 	public static final int SATURDAY = 6;
 	public static final int SUNDAY = 0;
-	
-
+	private int year;
+	private int month;
+	private int day;
+//	private class로 변수의 값을 미리 설정해놔서 굳이 이 클래스 안에서 고정된 값들을 보유한다
 	public Calendar(int year) {
 		this(year,0,0);
 	}
@@ -21,9 +23,20 @@ public class Calendar  {
 		this(year,month,0);
 	}
 	public Calendar(int year, int month, int day) {
-		this(year,month,day)
+		super();
+		this.day = day;
+		this.month = month;
+		this.year = year;
 	}
-
+	public void print() {
+		if(year != 0 && month != 0 && day !=0) {
+			printYear();
+		}else if (year != 0 && month != 0 && day ==0) {
+			printMonth(year,month);
+		}else if (year != 0 && month==0 && day==0) {
+			printDay();
+		}
+	}
 	private int leapYearCount(int year) {
 		int count = 0;
 		for (int i = 1; i < year; i++) {
@@ -62,7 +75,7 @@ public class Calendar  {
 	}
 
 //	요일 구하기
-	public void print(int year, int month, int day) {
+	public void printYear() {
 		String weekDayName = " ";
 		int weekDayNum = getCount(year, month, day) % 7;
 		if (weekDayNum == Calendar.MONDAY) {
@@ -85,7 +98,7 @@ public class Calendar  {
 	}
 
 //	달력 만들기
-	public void print(int year, int month) {
+	public void printMonth(int year, int month) {
 		System.out.println("\t\t"+year + "년 " + month + "월 달력입니다.");
 		System.out.println();
 		System.out.println("일\t월\t화\t수\t목\t금\t토");
@@ -116,17 +129,17 @@ public class Calendar  {
 	}
 
 //	연도 달력 만들기
-	public void print(int year) {
+	public void printDay() {
 		for (int i = 1; i <= 12; i++) {
-			print(year,i);
+			printMonth(year,i);
 		}
 	}
 
-	public static void main(String[] args) {
-		Calendar calendar = new Calendar();
-		calendar.print(2024, 2, 29);
-		calendar.print(2024,3,1);
-		calendar.print(2024, 2);
-//		calendar.print(2024);
-	}
+//	public static void main(String[] args) {
+//		Calendar calendar = new Calendar();
+//		calendar.printYear(2024, 2, 29);
+//		calendar.printMonth(2024,3);
+//		calendar.printDay(2024);
+////		calendar.print(2024);
+//	}
 }
