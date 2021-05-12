@@ -24,6 +24,7 @@ public class StopWatchDemo {
 			}
 		} else {
 			System.out.println("잘못 입력하셨습니다");
+//			run(timeInfo());
 			System.exit(0);
 		}
 		return null;
